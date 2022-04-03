@@ -1,6 +1,6 @@
 import User from "../../models/User"
 import connectDB from "../../middleware/mongoose"
-
+import bcrypt from 'bcrypt'
 
 const handler = async(req, res) => {
     if(req.method != 'POST'){
@@ -16,8 +16,12 @@ const handler = async(req, res) => {
     if(user!=null){
         res.status(400).json({error: "User exists"})
     }else{
-        let newuser = await User.create({name: `${name}`, email: `${email}`, password: `${password}`})
-        res.status(200).json({id: newuser._id, name: newuser.name, email: newuser.email})
+        try{
+            const salt = await bcrypt.genSalt()
+            const hashedPassword = await bcrypt.hash(password, salt)
+            let newuser = await User.create({name: `${name}`, email: `${email}`, password: `${hashedPassword}`})
+            res.status(200).json({id: newuser._id, name: newuser.name, email: newuser.email})
+        }catch{res.status(500).send()}
     }
 }
 

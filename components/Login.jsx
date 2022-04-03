@@ -1,13 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Head from 'next/head'
+import {useRouter} from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import axios from 'axios'
 
 import styles from '../styles/Login.module.css'
+import AppContext from './AppContext';
 
 function Login() {
+  
+  const router = useRouter()
+
+  const context = useContext(AppContext)
+  console.log(context)
 
   const [formData, setFormData] = useState({
     email: "",
@@ -25,10 +32,27 @@ function Login() {
 
   const onSubmit = async(e) => {
     e.preventDefault()
-    console.log("User tried to login")
-    const user = await axios.get('/api/loginUser', {params: {formData: formData}})
-    .then((data) => toast.success("Login successful"))
-    .catch((error)=> {toast.error(error.response.data.error)})
+    await axios.get('/api/loginUser', {params: {formData: formData}})
+    .then((data) => {
+      toast.success("Login successful")
+      const user = data.data
+      const {id, name, email} = user
+      const newuser = {
+        name: name,
+        email: email
+      }
+
+      context.changeUser(newuser)
+
+      router.push(`${id}/dashboard`)
+    }).catch((error)=> {
+      console.log(error)
+      toast.error(error.response.data.error)
+    })
+  }
+
+  const resetForm = () => {
+    setFormData('')
   }
 
 
@@ -50,7 +74,7 @@ function Login() {
                 <label htmlFor="name">Password : </label><input value={password} type="password" id='password' name='password' placeholder='Enter password... ' required onChange={onChange}/>
               </section>
               <section className={styles.btns}>
-                <button type='reset' className={`${styles.btn} ${styles.darkbtn}`}>Clear</button>
+                <button type='reset' className={`${styles.btn} ${styles.darkbtn}`} onClick={resetForm}>Clear</button>
                 <button type='submit' className={`${styles.btn} ${styles.lightbtn}`} onClick={onSubmit}>Submit</button>
               </section>
           </form>

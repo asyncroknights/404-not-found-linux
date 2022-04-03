@@ -46,6 +46,10 @@ function Signup() {
         }
   }
 
+  const resetForm = () => {
+    setFormData('')
+  }
+
   return (
     <div >
       <main className={styles.maincontainer}>
@@ -65,7 +69,7 @@ function Signup() {
                 <label htmlFor="name">Password : </label><input value={password2} type="password" id='password2' name='password2' placeholder='Confirm password... ' required onChange={onChange}/>
               </section>
               <section className={styles.btns}>
-                <button type='reset' className={`${styles.btn} ${styles.darkbtn}`}>Clear</button>
+                <button type='reset' className={`${styles.btn} ${styles.darkbtn}`} onClick={resetForm}>Clear</button>
                 <button type="submit" className={`${styles.btn} ${styles.lightbtn}`} onClick={onSubmit}>Submit</button>
               </section>
           </form>
