@@ -49,6 +49,7 @@ function Login() {
       console.log(error)
       toast.error(error.response.data.error)
     })
+    
   }
 
   const resetForm = () => {

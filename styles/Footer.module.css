@@ -1,0 +1,32 @@
+.footer{
+    background-color: var(--dark);
+    width: 100%;
+    padding: 1rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer span{
+    font-weight: 200;
+    color: var(--txt);
+}
+
+.footer span:hover{
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--imp);
+    transition: 0.3s ease-in;
+}
+
+@media (max-width: 600px) {
+
+    .footer {
+        flex-direction: column;
+    }
+    .footer span{
+      padding: 0.75rem;
+      font-size: 0.75rem;
+    }
+  }

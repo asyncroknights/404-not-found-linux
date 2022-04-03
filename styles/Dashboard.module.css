@@ -36,23 +36,17 @@
 .card form {
     margin: auto;
 }
-  
-.formSection label{
-    font-size: 1rem;
-    color: var(--txt)
-}
 
-.formSection input{
-    font-size: 1rem;
+.card div{
+    font-size: 2rem;
     padding: 1rem 2rem;
     background: black;
     border: none;
-    outline: 1px solid var(--txt);
     color: var(--txt);
     border-radius: 50px;
 }
-
-.card input:focus-within {
+    
+.card div:focus-within {
     outline: 2px solid var(--imp);
 }
 
@@ -94,18 +88,11 @@
     }
 
     .card h2{
-        font-size: 1.2rem;
+        font-size: 3rem;
     }
 
-    .formSection {
-        margin: 1rem;
-    }
-
-    .formSection label, .formSection input{
-        font-size: 0.7rem;
-    }
-
-    .formSection input {
+    .card div {
+        font-size: 1rem;
         padding: 0.4rem 1rem;
     }
 }

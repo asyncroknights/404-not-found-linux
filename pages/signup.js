@@ -12,7 +12,5 @@ export default function SignUp() {
       </Head>
       <Signup/>
     </>
-
   )
-
 }

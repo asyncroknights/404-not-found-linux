@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import Header from '../components/Header'
 import AppContext from '../components/AppContext'
 import {useContext, useState} from 'react'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
 
@@ -23,7 +24,7 @@ function MyApp({ Component, pageProps }) {
   <AppContext.Provider value={settings}>
     <Header/>
     <Component {...pageProps} />
-    
+    <Footer/>
   </AppContext.Provider>
   )
 }
