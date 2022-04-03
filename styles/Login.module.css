@@ -1,0 +1,88 @@
+.maincontainer {
+    height: 88vh;
+    display: grid;
+    place-items: center;
+  }
+  
+  .card {
+    width: 40%;
+    padding: 2rem;
+    background-color: black;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px 1px black;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.formSection {
+    margin: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+.card *{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.card h2{
+    font-size: 4rem;
+    color: var(--imp);
+}
+
+.card form {
+    margin: auto;
+}
+  
+.card label{
+    font-size: 1rem;
+    color: var(--txt)
+}
+
+.card input{
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    background: black;
+    border: none;
+    outline: 1px solid var(--txt);
+    color: var(--txt);
+    border-radius: 50px;
+}
+
+.card input:focus-within {
+    outline: 2px solid var(--imp);
+}
+
+.btns{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-evenly;
+}
+
+.btn{
+    padding: 0.5rem 0.7rem;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.lightbtn {
+    color: var(--dark);
+    background-color: var(--imp);
+}
+
+.darkbtn {
+    color: var(--imp);
+    background-color: black;
+    outline: 1px solid var(--imp);
+}
